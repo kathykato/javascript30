@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels 💪</title>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"> 
+</head>
+<body>
+
+<style>
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.panels {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.panel {
+  background: #6b0f9c;
+  color: #000;
+  text-align: center;
+  align-items: center;
+  /* Safari transitionend event.propertyName === flex */
+  /* Chrome + FF transitionend event.propertyName === flex-grow */
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel1 {
+  background: #cae7b9;
+}
+
+.panel2 {
+  background: #f3de8a;
+}
+
+.panel3 {
+  background: #eb9486;
+}
+
+.panel4 {
+  background: #7e7f9a;
+}
+
+.panel5 {
+  background: #97a7b3;
+}
+
+.panel > * {
+  margin: 0;
+  width: 100%;
+  transition: transform 0.5s;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel > *:first-child {
+  transform: translateY(-100%);
+}
+
+.panel.open-active > *:first-child {
+  transform: translateY(0);
+}
+
+.panel > *:last-child {
+  transform: translateY(100%);
+}
+
+.panel.open-active > *:last-child {
+  transform: translateY(0);
+}
+
+.panel p {
+  font-size: 0.8em;
+  opacity: 0.3;
+}
+
+.panel p:nth-child(2) {
+  font-size: 2.5em;
+}
+
+.panel.open {
+  flex: 5;
+  font-size: 40px;
+}
+</style>
+
+<div class="panels">
+  <div class="panel panel1">
+    <p>Hey</p>
+    <p>Let's</p>
+    <p>Dance</p>
+  </div>
+  <div class="panel panel2">
+    <p>Give</p>
+    <p>Take</p>
+    <p>Receive</p>
+  </div>
+  <div class="panel panel3">
+    <p>Experience</p>
+    <p>It</p>
+    <p>Today</p>
+  </div>
+  <div class="panel panel4">
+    <p>Give</p>
+    <p>All</p>
+    <p>You can</p>
+  </div>
+  <div class="panel panel5">
+    <p>Life</p>
+    <p>In</p>
+    <p>Motion</p>
+  </div>
+</div>
+
+<script>
+const panels = document.querySelectorAll('.panel');
+
+function toggleOpen() {
+  this.classList.toggle('open');
+}
+
+function toggleActive(e) {
+  console.log(e.propertyName);
+  if(e.propertyName.includes('flex')) {
+   this.classList.toggle('open-active'); 
+ }
+}
+
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+</script>
+
+</body>
+</html>

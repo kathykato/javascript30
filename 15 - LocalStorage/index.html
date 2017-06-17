@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Karla" rel="stylesheet"> 
+</head>
+<body>
+
+<style>
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  background: #8ac2b7;
+  color: #0c052d;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  padding: 20px;
+  border: 2px solid #dbdbdb;
+  max-width: 350px;
+  background: #fff;
+  box-shadow: 0 0 0 5px #fff;
+}
+
+h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.plates {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+.plates li {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
+}
+
+.plates label {
+  flex: 1;
+  cursor: pointer;
+}
+  
+.plates input {
+  display: none;
+}
+
+.plates input + label:before {
+  content: '⬜️';
+  margin-right: 10px;
+}
+
+.plates input:checked + label:before {
+  content: '🌮';
+}
+
+.add-items {
+  margin-top: 20px;
+}
+
+.add-items input,
+.extra input {
+  font-family: 'Karla', sans-serif;
+  font-size: 0.9rem;
+  padding: 10px;
+  outline: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.extra {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-around;
+}
+
+.item-text {
+  background: #fdf0d6;
+}
+
+.btn {
+  background: #f07060;
+  color: #fff;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #dbdbdb;
+  margin: 0.8em auto;
+  padding: 0; 
+  width: 60px;
+}
+</style>
+
+<div class="wrapper">
+  <h3>LOCAL TAPAS</h3>
+  <hr>
+  <ul class="plates">
+    <li>Loading Tapas...</li>
+  </ul>
+  <form class="add-items">
+    <input type="text" class="item-text" name="item" placeholder="Item Name" required>
+    <input type="submit" class="btn" value="+ Add Item">
+  </form>
+  <form class="extra">
+    <input type="submit" class="toggle-items btn" value="Toggle All Items">
+    <input type="submit" class="clear-list btn" value="Clear List">
+  </form>
+</div>
+
+<script>
+const addItems = document.querySelector('.add-items');
+const itemsList = document.querySelector('.plates');
+const items = JSON.parse(localStorage.getItem('items')) || [];
+const toggleItems = document.querySelector('.toggle-items');
+const clearItems = document.querySelector('.clear-list');
+
+function addItem(e) {
+  e.preventDefault();
+  const text = (this.querySelector('[name=item]')).value;
+  const item = {
+    text,
+    done: false
+  };
+
+  items.push(item);
+  populateList(items, itemsList);
+  localStorage.setItem('items', JSON.stringify(items));
+  this.reset();
+}
+
+function populateList(plates = [], platesList) {
+  platesList.innerHTML = plates.map((plate, i) => {
+    return `
+      <li>
+        <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+        <label for="item${i}">${plate.text}</label>
+      </li>
+    `;
+  }).join('');
+}
+
+function toggleDone(e) {
+  if (!e.target.matches('input')) return;
+  
+  const el = e.target;
+  const index = el.dataset.index;
+  items[index].done = !items[index].done;
+  localStorage.setItem('items', JSON.stringify(items));
+  populateList(items, itemsList);
+}
+
+function toggleAllDone(e) {
+  e.preventDefault();
+  items.filter(el => el.done = !el.done);
+  localStorage.setItem('items', JSON.stringify(items));
+  populateList(items, itemsList);
+}
+
+function clearList(e) {
+  e.preventDefault();
+  items.length = 0;
+  localStorage.clear();
+  populateList([], itemsList);
+}
+
+addItems.addEventListener('submit', addItem);
+itemsList.addEventListener('click', toggleDone);
+toggleItems.addEventListener('click', toggleAllDone);
+clearItems.addEventListener('click', clearList);
+
+populateList(items, itemsList);
+</script>
+
+</body>
+</html>
+

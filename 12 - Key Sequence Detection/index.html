@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Sequence Detection (KONAMI CODE)</title>
+</head>
+<body>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Overpass');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #1f212e;
+  color: #61698d;
+  font-family: 'Overpass', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+.confetti-time {
+  visibility: hidden;
+}
+
+.confetti {
+  position: absolute;
+  top: -1rem;
+  width: 1rem;
+  height: 1rem;
+  -webkit-animation: confettiRotation 1.5s infinite both ease-in;
+  -moz-animation: confettiRotation 1.5s infinite both ease-in;
+  animation: confettiRotation 1.5s infinite both ease-in;
+}
+
+.confetti:nth-child(1) {
+  left: 50%;
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  background: #5bc0eb;
+}
+
+.confetti:nth-child(2) {
+  left: 22%;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  background: #fde74c;
+}
+
+.confetti:nth-child(3) {
+  left: 13%;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  background: #9bc53d;
+}
+
+.confetti:nth-child(4) {
+  left: 54%;
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+  background: #e55934;
+}
+
+.confetti:nth-child(5) {
+  left: 29%;
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+  background: #fa7921;
+}
+
+.confetti:nth-child(6) {
+  left: 68%;
+  -webkit-animation-delay: 1.1s;
+  -moz-animation-delay: 1.1s;
+  animation-delay: 1.1s;
+  background: #a85aea;
+}
+
+.confetti:nth-child(7) {
+  left: 86%;
+  -webkit-animation-delay: 1.3s;
+  -moz-animation-delay: 1.3s;
+  animation-delay: 1.3s;
+  background: #ea5aab;
+}
+
+.confetti:nth-child(8) {
+  left: 40%;
+  -webkit-animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+  background: #4bfba2;
+}
+
+.confetti:nth-child(9) {
+  left: 10%;
+  -webkit-animation-delay: 1.7s;
+  -moz-animation-delay: 1.7s;
+  animation-delay: 1.7s;
+  background: #aafb4b;
+}
+
+.confetti:nth-child(10) {
+  left: 90%;
+  -webkit-animation-delay: 1.9s;
+  -moz-animation-delay: 1.9s;
+  animation-delay: 1.9s;
+  background: #3c55c3;
+}
+
+.confetti:nth-child(11) {
+  left: 60%;
+  -webkit-animation-delay: 2.1s;
+  -moz-animation-delay: 2.1s;
+  animation-delay: 2.1s;
+  background: #e43434;
+}
+
+.confetti:nth-child(12) {
+  left: 26%;
+  -webkit-animation-delay: 2.3s;
+  -moz-animation-delay: 2.3s;
+  animation-delay: 2.3s;
+  background: #c47ac3;
+}
+
+.confetti:nth-child(13) {
+  left: 2%;
+  -webkit-animation-delay: 2.5s;
+  -moz-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+  background: #7234e4;
+}
+
+.confetti:nth-child(14) {
+  left: 64%;
+  -webkit-animation-delay: 2.7s;
+  -moz-animation-delay: 2.7s;
+  animation-delay: 2.7s;
+  background: #2081f8;
+}
+
+.confetti:nth-child(15) {
+  left: 77%;
+  -webkit-animation-delay: 2.9s;
+  -moz-animation-delay: 2.9s;
+  animation-delay: 2.9s;
+  background: #e4a834;
+}
+
+@-webkit-keyframes confettiRotation {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0), skew(30deg) rotateX(0) rotateY(0);
+  }
+  100% {
+    -webkit-transform: translate3d(20px, 100vh, 0) skew(-30deg) rotateX(100deg) rotateY(380deg);
+  }
+}
+
+@-moz-keyframes confettiRotation {
+  0% {
+    -moz-transform: translate3d(0, 0, 0), skew(30deg) rotateX(0) rotateY(0);
+  }
+  100% {
+    -moz-transform: translate3d(20px, 100vh, 0) skew(-30deg) rotateX(100deg) rotateY(380deg);
+  }
+}
+
+@keyframes confettiRotation {
+  0% {
+    transform: translate3d(0, 0, 0), skew(30deg) rotateX(0) rotateY(0);
+  }
+  100% {
+    transform: translate3d(20px, 100vh, 0) skew(-30deg) rotateX(100deg) rotateY(380deg);
+  }
+}
+</style>
+
+<p>Enter the Secret Code: kathy</p>
+
+<div class="confetti-time">
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+</div>
+
+<script>
+const pressed = [];
+const secretCode = 'kathy';
+const p = document.querySelector('p');
+const confetti = document.querySelector('.confetti-time');
+
+window.addEventListener('keyup', (e) => {
+	console.log(e.key);
+	pressed.push(e.key);
+	pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+	if(pressed.join('').includes(secretCode)) {
+    console.log('Correct!');
+		p.innerHTML = 'You entered the secret code!';
+    confetti.style.visibility = 'visible';
+	}
+	console.log(pressed);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+<body>
+
+<h3>Update CSS Variables with <span class='hl'>JS</span></h3>
+
+<div class="controls">
+  <label for="spacing">Spacing:</label>
+  <br>
+  <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+  <br>
+  <label for="blur">Blur:</label>
+  <br>
+  <input id="blur" type="range" name="blur" min="0" max="25" value="0" data-sizing="px">
+  <br>
+  <label for="base">Base Color:</label>
+  <br>
+  <input id="base" type="color" name="base" value="#95c6c6">
+</div>
+
+<img src="https://source.unsplash.com/4Ia348kvX7A/800x500">
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+  --base: #95c6c6;
+  --spacing: 10px;
+  --blur: 0px;
+}
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+}
+
+.hl {
+  color: var(--base);
+}
+
+body {
+  text-align: center;
+  background: #fcfcfc;
+  color: #363b3f;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1.3rem;
+}
+
+.controls {
+  margin-bottom: 50px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  width: 300px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 3px;
+  background: #dce6e9;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--base);
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+  width: 300px;
+  height: 3px;
+  background: #dce6e9;
+  border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--base);
+}
+
+input[type=range]:-moz-focusring {
+  outline: 1px solid #dce6e9;
+  outline-offset: -1px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  background-color: #fff;
+  border: 1px solid #dce6e9;
+  height: 2.4rem;
+  padding: 0.5rem;
+  width: 100px;
+  margin: 4px;
+  box-shadow: none;
+}
+</style>
+
+<script>
+const inputs = document.querySelectorAll('.controls input');
+
+function handleUpdate() {
+  const suffix = this.dataset.sizing || '';
+  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+}
+
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+</script>
+
+</body>
+</html>

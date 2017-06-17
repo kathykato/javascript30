@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide In on Scroll</title>
+</head>
+<body>
+
+<div id="header">
+  <h1>Scroll down to see the slide in animations! (｡•̀ᴗ-)✧</h1>
+</div>
+
+<div class="site-wrap">
+  <div class="row">
+    <div class="column">
+      <img src="https://source.unsplash.com/p0aIMbPK-Z0" class="align-left slide-in">
+    </div>
+    <div class="column">
+        <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam!</p>
+    </div>
+  </div>
+  <div class="row reverse">
+    <div class="column">
+      <img src="https://source.unsplash.com/ZkgWJ4BfgsE" class="align-right slide-in">
+    </div>
+    <div class="column">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est. Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias.<p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <img src="https://source.unsplash.com/YwSy97_Rk1o" class="align-left slide-in">
+    </div>
+    <div class="column">
+      <p>Laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+
+  return function() {
+    var context = this, args = arguments;
+
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+
+    if (callNow) func.apply(context, args);
+  };
+};
+
+const sliderImages = document.querySelectorAll('.slide-in');
+
+function checkSlide(e) {
+  sliderImages.forEach(sliderImage => {
+    const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+    const imageBottom = sliderImage.offsetTop + sliderImage.height;
+    const isHalfShown = slideInAt > sliderImage.offsetTop;
+    const isNotScrolledPast = window.scrollY < imageBottom;
+
+    if(isHalfShown && isNotScrolledPast) {
+      sliderImage.classList.add('active');
+    } else {
+      sliderImage.classList.remove('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', debounce(checkSlide));
+
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Hind');
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  background: #fff;
+  font-family: 'Hind', sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.5em;
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 1.5em;
+}
+
+p {
+  margin: 30px;
+}
+
+#header {
+  position: relative;
+  height: 100vh;
+  background: #f5f5f5;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-wrap {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.row {
+  padding: 20px 0;
+}
+
+.column {
+  color: #f45549;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+}
+
+.column img {
+  width: 100%; 
+  height: auto; 
+}
+
+.slide-in {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide-in {
+  transform:translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform:translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform:translateX(0%) scale(1);
+}
+
+@media screen and (min-width: 800px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .reverse {
+    flex-direction: row-reverse;
+  }
+}
+</style>
+
+</body>
+</html>
