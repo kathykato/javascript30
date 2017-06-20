@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  background: #fff;
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.50;
+  color: #272727;
+}
+
+.photobooth {
+  background: #fff;
+  max-width: 150rem;
+  margin: 2rem auto;
+  border-radius: 2px;
+}
+
+.photobooth:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.photo {
+  width: 100%;
+  float: left;
+}
+
+.player {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+}
+
+.strip {
+  padding: 2rem;
+}
+.strip img {
+  width: 100px;
+  overflow-x: scroll;
+  padding: 0.8rem;
+  background: #fff;
+}
+
+label {
+  padding: 10px 0;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  width: 300px;
+  padding-top: 8px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ebeaed;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #8eadde;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+  width: 300px;
+  height: 5px;
+  background: #ebeaed;
+  border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #8eadde;
+}
+
+input[type=range]:-moz-focusring {
+  outline: 1px solid #dcdde2;
+  outline-offset: -1px;
+}
+
+.controls {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#photo-btn {
+  font-family: 'Roboto', sans-serif;
+  margin: 20px 0;
+  background: #fe9797;
+  color: #fff;
+  font-size: 1.1rem;
+  border: 1px solid transparent;
+  padding: 0.5rem 1.2rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+}
