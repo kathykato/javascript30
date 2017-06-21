@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Detection</title>
+</head>
+<body>
+
+<div class="words" contenteditable>
+</div>
+
+<script>
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!window.SpeechRecognition) {
+  alert("Your browser does not support speech recognition. Use Chrome!")
+}
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+
+let p = document.createElement('p');
+const words = document.querySelector('.words');
+words.appendChild(p);
+
+recognition.addEventListener('result', e => {
+  const transcript = Array.from(e.results)
+    .map(result => result[0])
+    .map(result => result.transcript)
+    .join('');
+
+    p.textContent = transcript;
+
+    if(e.results[0].isFinal) {
+      p = document.createElement('p');
+      words.appendChild(p);
+    }
+
+  console.log(transcript);
+});
+
+
+recognition.addEventListener('end', recognition.start);
+recognition.start();
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background: #fce6d3;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+  color: #1d2e4b;
+}
+
+.words {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 5px;
+  padding: 1rem 2rem 1rem 5rem;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#cfddf9), color-stop(4%, #fff)) 0 4px;
+  background-size: 100% 3rem;
+  position: relative;
+  line-height: 3rem;
+  -moz-box-shadow: 2px 8px 15px rgba(228, 126, 118, 0.5);
+  -webkit-box-shadow: 2px 8px 15px rgba(228, 126, 118, 0.5);
+  box-shadow: 2px 8px 15px rgba(228, 126, 118, 0.5);
+}
+
+p {
+  margin: 0 0 3rem;
+}
+
+.words:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  border: 1px solid;
+  border-color: transparent #ffd9d9;
+}
+</style>
+
+</body>
+</html>
