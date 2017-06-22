@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geolocation</title>
+</head>
+<body>
+
+<div class="column">
+  <h4>Latitude:</h4>
+  <p id="latitude">0</p>
+</div>
+<div class="column">
+  <h4>Longitude:</h4>
+  <p id="longitude">0</p>
+</div>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #f7f8fd;
+  color: #101533;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.column {
+  padding: 0 15px;
+}
+</style>
+
+<script>
+const latText = document.querySelector('#latitude');
+const lonText = document.querySelector('#longitude');
+
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position);
+
+    latText.textContent = position.coords.latitude;
+    lonText.textContent = position.coords.longitude;
+  }, (err) => {
+    console.error(err);
+    alert('Allow your device to access your location for this to work!');
+  });
+}
+</script>
+
+</body>
+</html>
