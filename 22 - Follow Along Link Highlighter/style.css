@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0; /* Important! */
+  font-family: 'Lato', serif;
+  color: #7d7d7d;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 650px;
+  font-size: 20px;
+  line-height: 2;
+  position: relative;
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
+  color: #272727;
+}
+
+a {
+  text-decoration: none;
+  color: #272727;
+  background: rgba(240, 233, 241, 0.4);
+}
+
+.highlight {
+  transition: all 0.2s;
+  border-bottom: 2px solid #fff8a3;
+  position: absolute;
+  top: 0;
+  background: #fff8a3;
+  left: 0;
+  z-index: -1;
+  display: block;
+}
+
+.menu {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 30px 0 70px 0;
+}
+
+.menu a {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 20px;
+}
+
+#profile {
+  margin: 30px 0;
+}
+
+img {
+  margin: 0 auto;
+  display: block;
+  width: 125px;
+  height: 125px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
