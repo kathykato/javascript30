@@ -1,0 +1,137 @@
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  color: #737373;
+}
+
+.site-wrap {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 40px;
+  text-align: justify;
+  overflow: hidden;
+}
+
+header {
+  text-align: center;
+  height: 50vh;
+  background: #dbe7f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  color: #1a1720;
+}
+
+h2 {
+  color: #ff5274;
+}
+
+nav {
+  background: #dbe7f5;
+  top: 0;
+  width: 100%;
+  transition: all 0.5s;
+  position: relative;
+  z-index: 1;
+}
+
+.fixed-nav nav {
+  position: fixed;
+  background: #fff;
+  box-shadow: 0px 6px 9px 0px rgba(0,0,0,.12),0px 0px 6px 0px rgba(0,0,0,.03);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li.logo {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 0;
+  overflow: hidden;
+  transition: all .5s;
+  font-weight: 600;
+}
+
+.fixed-nav li.logo {
+  max-width: 500px;
+  font-size: 18px;
+}
+
+li.logo a {
+  color: #272727;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+  color: #61646b;
+  transition: all 0.2s;
+  text-transform: lowercase;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #1a1720;
+}
+
+span {
+  color: #ff5274;
+}
+
+img {
+  width: 100%; 
+  height: auto;
+}
+
+.slide-in {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide-in {
+  transform:translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform:translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform:translateX(0%) scale(1);
+}
