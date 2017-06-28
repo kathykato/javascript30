@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+body {
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #3b3e45;
+  font-family: 'Muli', sans-serif;
+}
+
+.wrapper {
+  width: 850px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+video {
+  -webkit-box-shadow: 0px 15px 20px 0px rgba(30, 30, 34, 0.9);
+  -moz-box-shadow: 0px 15px 20px 0px rgba(30, 30, 34, 0.9);
+  box-shadow: 0px 15px 20px 0px rgba(30, 30, 34, 0.9);
+}
+
+.speed {
+  background: #ecedef;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  -webkit-box-shadow: 0 0 1px 3px rgba(30, 30, 34, 0.2);
+  -moz-box-shadow: 0 0 1px 3px rgba(30, 30, 34, 0.2);
+  box-shadow: 0 0 1px 3px rgba(30, 30, 34, 0.2);
+  overflow: hidden;
+}
+
+.speed-bar {
+  width: 100%;
+  background: #48c6ef;
+  background: -webkit-linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background: -moz-linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  -webkit-text-shadow: 1px 1px 2px rgba(30, 30, 34,0.2);
+  -moz-text-shadow: 1px 1px 2px rgba(30, 30, 34,0.2);
+  text-shadow: 1px 1px 2px rgba(30, 30, 34,0.2);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  color: #fff;
+  height: 16.3%;
+}
