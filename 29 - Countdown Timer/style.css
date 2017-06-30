@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Heebo', sans-serif;
+  background: #3f456b;
+}
+
+.display__time-left {
+  font-size: 13rem;
+  margin: 0;
+  color: #fff;
+}
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls > * {
+  margin-bottom: 10px;
+}
+
+.timer__controls input {
+  border: 0;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.timer__button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background: #f58780;
+  padding: 1.5rem;
+  font-family: 'Heebo', sans-serif;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background: #e46159;
+  outline: 0;
+}
+
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__end-time {
+  font-size: 2.5rem;
+  color: #c6cdea;
+}
