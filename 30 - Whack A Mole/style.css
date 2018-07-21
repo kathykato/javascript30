@@ -63,7 +63,7 @@ h2 {
 
 .hole:after {
   display: block;
-  background: url('http://katherinekato.com/misc/dirt.svg') bottom center no-repeat;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/dirt.svg') bottom center no-repeat;
   background-size: contain;
   content: '';
   width: 100%;
@@ -74,7 +74,7 @@ h2 {
 }
 
 .mole {
-  background: url('http://katherinekato.com/misc/mole.svg') bottom center no-repeat;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/mole.svg') bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   top: 100%;
